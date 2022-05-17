@@ -1,13 +1,17 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
  trigger:
  - main
 
  pool:
    vmImage: 'ubuntu-latest'
+
+strategy:
+  matrix:
+    jdk10:
+      jdkVersion: "1.10"
+    jdk11:
+      jdkVersion: "1.11"
+  maxParallel: 2
+
 
  steps:
  - task: Maven@3
